@@ -31,5 +31,18 @@ namespace Gregslist.Services
                FakeDb.Cars.Remove(car);
                return car;
            }
+
+        public Car updateCar(Car carData, int id)
+        {
+            Car original = FakeDb.Cars.Find(c => c.Id == id);
+            original.Make = carData.Make;
+            original.Model = carData.Model;
+            original.year = carData.year;
+            original.price = carData.price;
+
+            return original;
+
+
+        }
     }
 }
