@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Gregslist.Data;
 using Gregslist.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -12,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using MySqlConnector;
 
 namespace Gregslist
 {
@@ -34,6 +37,16 @@ namespace Gregslist
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Gregslist", Version = "v1" });
             });
             services.AddTransient<CarsService>();
+            services.AddTransient<CarsRepository>();
+            services.AddScoped<IDbConnection>(x => CreateDbConnection());
+
+
+        }
+         public IDbConnection CreateDbConnection()
+        {
+            // NOTE reading environment variables
+            string connectionString = Configuration["DB:CONNECTION_STRING"];
+            return new MySqlConnection(connectionString);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

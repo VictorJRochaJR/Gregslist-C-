@@ -27,3 +27,5 @@ C:\Users\vroch\source\codeworks\Gregslist\obj\Debug\net5.0\Gregslist.dll
 C:\Users\vroch\source\codeworks\Gregslist\obj\Debug\net5.0\ref\Gregslist.dll
 C:\Users\vroch\source\codeworks\Gregslist\obj\Debug\net5.0\Gregslist.pdb
 C:\Users\vroch\source\codeworks\Gregslist\obj\Debug\net5.0\Gregslist.genruntimeconfig.cache
+C:\Users\vroch\source\codeworks\Gregslist\bin\Debug\net5.0\Dapper.dll
+C:\Users\vroch\source\codeworks\Gregslist\bin\Debug\net5.0\MySqlConnector.dll

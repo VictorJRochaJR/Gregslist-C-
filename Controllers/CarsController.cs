@@ -16,9 +16,19 @@ namespace Gregslist.Controllers
             _cs = cs;
         }
         [HttpGet]
-        public List<Car> GetCars()
+        public ActionResult<List<Car>> GetCars()
         {
-            return _cs.GetAll();
+            try
+            {
+                var cars = _cs.GetAll();
+                return Ok(cars);
+            }
+            catch (System.Exception e)
+            {
+                
+                return BadRequest(e.Message);
+            }
+            
         }
 
         [HttpGet("{id}")]
@@ -43,7 +53,7 @@ namespace Gregslist.Controllers
         {
             try
             {
-                var car = _cs.createCar(carData);
+                var car = _cs.CreateCar(carData);
                 return Created("api/cars/" + car.Id, car);
             }
             catch (System.Exception e)
